@@ -118,7 +118,7 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.H) || Input.GetButtonDown ("Fire3")) {
-			Hadoken.movementForce = Hadoken.movementForce * -1;
+			// Hadoken.movementForce = Hadoken.movementForce * -1;
 			print (Hadoken.movementForce);
 			animator.SetTrigger ("HADOKEN");
 		}
@@ -162,7 +162,7 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.PageDown) || Input.GetButtonDown ("Fire6")) {
-			Hadoken.movementForce = Hadoken.movementForce * -1;
+			// Hadoken.movementForce = Hadoken.movementForce * -1;
 			print (Hadoken.movementForce);
 			animator.SetTrigger ("HADOKEN");
 		}
