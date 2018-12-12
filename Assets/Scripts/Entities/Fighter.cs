@@ -62,7 +62,6 @@ public class Fighter : MonoBehaviour {
 			animator.SetBool ("DUCK", false);
 		}
 
-
 		if ((Input.GetAxis ("Vertical") > 0.1)) {
 			animator.SetTrigger ("JUMP");
 		}
@@ -94,6 +93,7 @@ public class Fighter : MonoBehaviour {
 				animator.SetBool ("WALK_BACK", true);
 				animator.SetBool ("DEFEND", false);
 			}
+
 		} else {
 			animator.SetBool ("WALK_BACK", false);
 			animator.SetBool ("DEFEND", false);
@@ -118,6 +118,8 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.H) || Input.GetButtonDown ("Fire3")) {
+			Hadoken.movementForce = Hadoken.movementForce * -1;
+			print (Hadoken.movementForce);
 			animator.SetTrigger ("HADOKEN");
 		}
 	}
@@ -160,6 +162,8 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.PageDown) || Input.GetButtonDown ("Fire6")) {
+			Hadoken.movementForce = Hadoken.movementForce * -1;
+			print (Hadoken.movementForce);
 			animator.SetTrigger ("HADOKEN");
 		}
 	}

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Hadoken : MonoBehaviour {
 	public Fighter caster;
 	public Fighter fighter;
-	public float movementForce = 200;
+	public static float movementForce = 200;
 	public float damage;
 
 	private Rigidbody body;

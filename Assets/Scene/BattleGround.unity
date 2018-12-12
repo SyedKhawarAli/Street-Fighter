@@ -1495,7 +1495,7 @@ Prefab:
       objectReference: {fileID: 2121197941}
     - target: {fileID: 11424420, guid: 4fb482866d267e344ab7a77928e5e723, type: 2}
       propertyPath: healt
-      value: 200
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb482866d267e344ab7a77928e5e723, type: 2}
@@ -1695,6 +1695,10 @@ Prefab:
     - target: {fileID: 11424420, guid: 4fb482866d267e344ab7a77928e5e723, type: 2}
       propertyPath: fighterName
       value: Ryu2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11424420, guid: 4fb482866d267e344ab7a77928e5e723, type: 2}
+      propertyPath: healt
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb482866d267e344ab7a77928e5e723, type: 2}
