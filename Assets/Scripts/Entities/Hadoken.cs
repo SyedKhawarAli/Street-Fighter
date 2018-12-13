@@ -4,7 +4,7 @@ using UnityEngine;
 public class Hadoken : MonoBehaviour {
 	public Fighter caster;
 	public Fighter fighter;
-	public static float movementForce = 200;
+	public float movementForce = 200;
 	public float damage;
 
 	private Rigidbody body;
@@ -15,11 +15,6 @@ public class Hadoken : MonoBehaviour {
 		Debug.Log ("Hadok " + this.gameObject.name);
 		creationTime = Time.time;
 		body = GetComponent<Rigidbody> ();
-		// if (Fighter.player == Fighter.PlayerType.player1) {
-		// 	body.AddRelativeForce (new Vector3 (movementForce, 0, 0));
-		// } else {
-		// 	body.AddRelativeForce (new Vector3 (-movementForce, 0, 0));
-		// }
 		body.AddRelativeForce (new Vector3 (movementForce, 0, 0));
 	}
 

@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 13526208}
   - component: {fileID: 11418428}
   m_Layer: 0
-  m_Name: HitColider (1)
+  m_Name: HitColider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3525,8 +3525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109d083b1eda3d043bf618bed87b680e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchName: Right punch
-  damage: 5
+  punchName: Right Upper punch
+  damage: 3
   owner: {fileID: 11424420}
 --- !u!114 &11424420
 MonoBehaviour:
@@ -3557,7 +3557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   punchName: Left punch
-  damage: 5
+  damage: 2
   owner: {fileID: 11424420}
 --- !u!114 &11485876
 MonoBehaviour:
@@ -3570,8 +3570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109d083b1eda3d043bf618bed87b680e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchName: Kick
-  damage: 20
+  punchName: left Kick
+  damage: 5
   owner: {fileID: 11424420}
 --- !u!135 &13526208
 SphereCollider:
@@ -5400,8 +5400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109d083b1eda3d043bf618bed87b680e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchName: Kick
-  damage: 10
+  punchName: right Kick
+  damage: 5
   owner: {fileID: 11424420}
 --- !u!114 &114296727605717762
 MonoBehaviour:
@@ -5415,7 +5415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   punchName: Right punch
-  damage: 5
+  damage: 2
   owner: {fileID: 11424420}
 --- !u!135 &135239819720957126
 SphereCollider:

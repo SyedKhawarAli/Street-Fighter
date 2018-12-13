@@ -211,8 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caster: {fileID: 0}
   fighter: {fileID: 0}
-  movementForce: 150
-  damage: 20
+  damage: 5
 --- !u!135 &13594254
 SphereCollider:
   m_ObjectHideFlags: 1

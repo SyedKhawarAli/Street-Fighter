@@ -22,6 +22,7 @@ public class Fighter : MonoBehaviour {
 		protected Animator animator;
 		private Rigidbody myBody;
 		private AudioSource audioPlayer;
+		private CapsuleCollider capculeCollider;
 
 		//for AI only
 		private float random;
@@ -32,6 +33,7 @@ public class Fighter : MonoBehaviour {
 		myBody = GetComponent<Rigidbody> ();
 		animator = GetComponent<Animator> ();
 		audioPlayer = GetComponent<AudioSource> ();
+		capculeCollider = GetComponent<CapsuleCollider> ();
 	}
 
 	public void UpdateHumanInput () {
@@ -100,9 +102,9 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetAxis ("Vertical") < -0.1) {
-			animator.SetBool ("DUCK", true);
+			OnDuckPressed ();
 		} else {
-			animator.SetBool ("DUCK", false);
+			OnDuckLift ();
 		}
 
 		if ((Input.GetAxis ("Vertical") > 0.1)) {
@@ -118,10 +120,19 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.H) || Input.GetButtonDown ("Fire3")) {
-			// Hadoken.movementForce = Hadoken.movementForce * -1;
-			print (Hadoken.movementForce);
-			animator.SetTrigger ("HADOKEN");
+			runHadoken ();
 		}
+	}
+
+	private void OnDuckPressed () {
+		capculeCollider.height = 0.8f;
+		capculeCollider.center = new Vector3 (0, 0.42f, 0);
+		animator.SetBool ("DUCK", true);
+	}
+	private void OnDuckLift () {
+		capculeCollider.height = 1.75f;
+		capculeCollider.center = new Vector3 (0, 0.89f, 0);
+		animator.SetBool ("DUCK", false);
 	}
 	public void UpdatePlayer2Input () {
 		if (Input.GetAxis ("Horizontal1") < -0.1) {
@@ -129,7 +140,6 @@ public class Fighter : MonoBehaviour {
 		} else {
 			animator.SetBool ("WALK", false);
 		}
-
 		if (Input.GetAxis ("Horizontal1") > 0.1) {
 			if (oponent.attacking) {
 				animator.SetBool ("WALK_BACK", false);
@@ -144,9 +154,9 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetAxis ("Vertical1") < -0.1) {
-			animator.SetBool ("DUCK", true);
+			OnDuckPressed ();
 		} else {
-			animator.SetBool ("DUCK", false);
+			OnDuckLift ();
 		}
 
 		if ((Input.GetAxis ("Vertical1") > 0.1)) {
@@ -162,10 +172,14 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.PageDown) || Input.GetButtonDown ("Fire6")) {
-			// Hadoken.movementForce = Hadoken.movementForce * -1;
-			print (Hadoken.movementForce);
-			animator.SetTrigger ("HADOKEN");
+			runHadoken ();
 		}
+	}
+
+	private void runHadoken () {
+
+		// print (Hadoken.movementForce);
+		animator.SetTrigger ("HADOKEN");
 	}
 	public void UpdateAiInput () {
 		animator.SetBool ("defending", defending);
@@ -195,8 +209,10 @@ public class Fighter : MonoBehaviour {
 
 			if (player == PlayerType.player1) {
 				UpdatePlayer1Input ();
+				// Hadoken.movementForce = -400;
 			} else if (player == PlayerType.player2) {
 				UpdatePlayer2Input ();
+				// Hadoken.movementForce = 200;
 			} else if (player == PlayerType.HUMAN) {
 				UpdateHumanInput ();
 			} else {

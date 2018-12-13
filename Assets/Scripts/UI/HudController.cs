@@ -28,10 +28,10 @@ public class HudController : MonoBehaviour {
 		timerText.text = battle.roundTime.ToString();
 
 		if (leftBar.size > player1.healtPercent) {
-			leftBar.size-= 0.01f;
+			leftBar.size-= 0.05f;
 		}
 		if (rightBar.size > player2.healtPercent) {
-			rightBar.size-= 0.01f;
+			rightBar.size-= 0.05f;
 		}
 	}
 }
