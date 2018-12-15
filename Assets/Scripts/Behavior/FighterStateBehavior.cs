@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FighterStateBehavior : StateMachineBehaviour {
 
@@ -9,10 +9,12 @@ public class FighterStateBehavior : StateMachineBehaviour {
 	public float horizontalForce;
 	public float verticalForce;
 
+	public static Fighter p1;
+	public static Fighter p2;
 	protected Fighter fighter;
 
-	override public void OnStateEnter(Animator animator, 
-	                                  AnimatorStateInfo stateInfo, int layerIndex) {
+	override public void OnStateEnter (Animator animator,
+		AnimatorStateInfo stateInfo, int layerIndex) {
 		if (fighter == null) {
 			fighter = animator.gameObject.GetComponent<Fighter> ();
 		}
@@ -20,14 +22,20 @@ public class FighterStateBehavior : StateMachineBehaviour {
 		fighter.currentState = behaviorState;
 
 		if (soundEffect != null) {
-			fighter.playSound(soundEffect);
+			fighter.playSound (soundEffect);
 		}
 
 		fighter.body.AddRelativeForce (new Vector3 (0, verticalForce, 0));
 	}
 
-	override public void OnStateUpdate(Animator animator, 
-	                                   AnimatorStateInfo stateInfo, int layerIndex) {
+	override public void OnStateUpdate (Animator animator,
+		AnimatorStateInfo stateInfo, int layerIndex) {
+
+		if (Mathf.Abs (p1.transform.position.x - p2.transform.position.x) < 1) {
+			//Debug.Log(Mathf.Abs (p1.transform.position.x - p2.transform.position.x));
+			// horizontalForce = 0f;
+		}
+
 		fighter.body.AddRelativeForce (new Vector3 (0, 0, horizontalForce));
 	}
 }

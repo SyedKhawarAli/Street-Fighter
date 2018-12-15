@@ -209,9 +209,11 @@ public class Fighter : MonoBehaviour {
 
 			if (player == PlayerType.player1) {
 				UpdatePlayer1Input ();
+				FighterStateBehavior.p1 = this;
 				// Hadoken.movementForce = -400;
 			} else if (player == PlayerType.player2) {
 				UpdatePlayer2Input ();
+				FighterStateBehavior.p2 = this;
 				// Hadoken.movementForce = 200;
 			} else if (player == PlayerType.HUMAN) {
 				UpdateHumanInput ();

@@ -3669,7 +3669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healt: 100
-  fighterName: Ryu2
+  fighterName: Player 2
   oponent: {fileID: 0}
   enable: 1
   player: 3

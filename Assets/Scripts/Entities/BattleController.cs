@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
 public class BattleController : MonoBehaviour {
 	public int roundTime = 100;
@@ -18,14 +18,14 @@ public class BattleController : MonoBehaviour {
 		banner.showRoundFight ();
 	}
 
-	private void expireTime(){
+	private void expireTime () {
 		if (player1.healtPercent > player2.healtPercent) {
 			player2.healt = 0;
 		} else {
 			player1.healt = 0;
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (!battleStarted && !banner.isAnimating) {
@@ -34,24 +34,25 @@ public class BattleController : MonoBehaviour {
 			player1.enable = true;
 			player2.enable = true;
 
-			GameUtils.playSound(backgroundMusic, musicPlayer);
+			GameUtils.playSound (backgroundMusic, musicPlayer);
 		}
 
 		if (battleStarted && !battleEnded) {
 			if (roundTime > 0 && Time.time - lastTimeUpdate > 1) {
 				roundTime--;
 				lastTimeUpdate = Time.time;
-				if (roundTime == 0){
-					expireTime();
+				if (roundTime == 0) {
+					expireTime ();
 				}
 			}
 
 			if (player1.healtPercent <= 0) {
-				banner.showYouLose ();
+				banner.showYouWin (player2.name);
+				// banner.showYouLose ();
 				battleEnded = true;
 
 			} else if (player2.healtPercent <= 0) {
-				banner.showYouWin ();
+				banner.showYouWin (player1.name);
 				battleEnded = true;
 			}
 		}
