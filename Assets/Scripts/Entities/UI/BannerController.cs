@@ -21,8 +21,8 @@ public class BannerController : MonoBehaviour {
 	}
 
 	public void showYouWin (string playerName) {
-		// animating = true;
-		// animator.SetTrigger ("SHOW_YOU_WIN");
+		animating = true;
+		animator.SetTrigger ("SHOW_YOU_WIN");
 		winText.GetComponent<Text> ().text = playerName + "  WON";
 		winText.SetActive (true);
 		restartBtn.SetActive (true);

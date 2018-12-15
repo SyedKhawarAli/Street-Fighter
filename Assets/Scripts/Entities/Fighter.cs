@@ -23,6 +23,7 @@ public class Fighter : MonoBehaviour {
 		private Rigidbody myBody;
 		private AudioSource audioPlayer;
 		private CapsuleCollider capculeCollider;
+		private Quaternion fighterRotation;
 
 		//for AI only
 		private float random;
@@ -244,6 +245,7 @@ public class Fighter : MonoBehaviour {
 			if (healt > 0) {
 				animator.SetTrigger ("TAKE_HIT");
 			}
+			// StartCoroutine (RestRotation ());
 		}
 	}
 	public void playSound (AudioClip sound) {
@@ -276,5 +278,17 @@ public class Fighter : MonoBehaviour {
 		get {
 			return this.myBody;
 		}
+	}
+
+	public void flyingAnimation () {
+		print ("flying kics hit");
+		fighterRotation = this.GetComponent<Transform> ().rotation;
+		animator.SetTrigger ("FLY");
+		StartCoroutine (RestRotation ());
+	}
+
+	IEnumerator RestRotation () {
+		yield return new WaitForSeconds (2);
+		this.GetComponent<Transform> ().rotation = Quaternion.Euler (0, fighterRotation.eulerAngles.y, 0);
 	}
 }

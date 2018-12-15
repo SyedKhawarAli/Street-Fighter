@@ -31,11 +31,8 @@ public class FighterStateBehavior : StateMachineBehaviour {
 	override public void OnStateUpdate (Animator animator,
 		AnimatorStateInfo stateInfo, int layerIndex) {
 
-		if (Mathf.Abs (p1.transform.position.x - p2.transform.position.x) < 1) {
-			//Debug.Log(Mathf.Abs (p1.transform.position.x - p2.transform.position.x));
-			// horizontalForce = 0f;
-		}
 
 		fighter.body.AddRelativeForce (new Vector3 (0, 0, horizontalForce));
 	}
+
 }
