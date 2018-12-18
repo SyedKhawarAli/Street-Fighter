@@ -24,7 +24,7 @@ public class Fighter : MonoBehaviour {
 		private AudioSource audioPlayer;
 		private CapsuleCollider capculeCollider;
 		private Quaternion fighterRotation;
-
+		private bool brakeDefend;
 		//for AI only
 		private float random;
 		private float randomSetTime;
@@ -113,7 +113,8 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetButtonDown ("Fire1")) {
-			animator.SetTrigger ("PUNCH");
+			runPunch ();
+			// animator.SetTrigger ("PUNCH");
 		}
 
 		if (Input.GetKeyDown (KeyCode.K) || Input.GetButtonDown ("Fire2")) {
@@ -165,7 +166,8 @@ public class Fighter : MonoBehaviour {
 		}
 
 		if (Input.GetKeyDown (KeyCode.Delete) || Input.GetButtonDown ("Fire4")) {
-			animator.SetTrigger ("PUNCH");
+			runPunch ();
+			// animator.SetTrigger ("PUNCH");
 		}
 
 		if (Input.GetKeyDown (KeyCode.End) || Input.GetButtonDown ("Fire5")) {
@@ -177,6 +179,9 @@ public class Fighter : MonoBehaviour {
 		}
 	}
 
+	private void runPunch () {
+		animator.SetTrigger ("PUNCH");
+	}
 	private void runHadoken () {
 
 		// print (Hadoken.movementForce);
@@ -234,15 +239,29 @@ public class Fighter : MonoBehaviour {
 	public virtual void hurt (float damage) {
 		if (!invulnerable) {
 			if (defending) {
-				damage *= 0.2f;
+				damage = 0f;
+				// animator.SetTrigger ("TAKE_HIT");
+				print ("defending is true");
+				animator.SetBool ("DEFEND", true);
+				return;
+			}
+			if (animator.GetBool ("DEFEND") == true && FighterBrokeDeffendBehaviour.BrokeDeffend == false)
+				damage = 0;
+			if (animator.GetBool ("DEFEND") == true && FighterBrokeDeffendBehaviour.BrokeDeffend == true) {
+				damage *= 0.20f;
+				animator.SetTrigger ("TAKE_HIT");
+				print ("defend is broken and damge: " + damage);
 			}
 			if (healt >= damage) {
 				healt -= damage;
 			} else {
 				healt = 0;
+				capculeCollider.height = 0.1f;
+				capculeCollider.center = new Vector3 (0, 0.12f, 0);
 			}
 
-			if (healt > 0) {
+			if (healt > 0 && animator.GetBool ("DEFEND") == false) {
+				print ("got hit");
 				animator.SetTrigger ("TAKE_HIT");
 			}
 			// StartCoroutine (RestRotation ());
@@ -281,6 +300,8 @@ public class Fighter : MonoBehaviour {
 	}
 
 	public void flyingAnimation () {
+		if (animator.GetBool ("DEFEND") == true)
+			return;
 		print ("flying kics hit");
 		fighterRotation = this.GetComponent<Transform> ().rotation;
 		animator.SetTrigger ("FLY");

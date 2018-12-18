@@ -56,7 +56,7 @@ public class BannerController : MonoBehaviour {
 	/// </summary>
 	void Update () {
 		if (restartBtn.activeSelf) {
-			if (Input.GetKeyDown (KeyCode.Joystick1Button5) || Input.GetKeyDown (KeyCode.Joystick2Button5)) {
+			if (Input.GetKeyDown (KeyCode.Joystick1Button5) || Input.GetKeyDown (KeyCode.Joystick2Button5) ||  Input.GetKeyDown (KeyCode.R)) {
 				startTempScene ();
 			}
 		}

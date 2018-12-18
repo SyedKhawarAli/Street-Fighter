@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4862536611192480}
   - component: {fileID: 198376629027251376}
   - component: {fileID: 199651954892325870}
+  - component: {fileID: 114583373968747544}
   m_Layer: 0
   m_Name: particle fireball master
   m_TagString: Untagged
@@ -72,6 +73,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114583373968747544
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1865580274573572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce24bc22522b4d4ba9a5164ff0ce70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198376629027251376
 ParticleSystem:
   m_ObjectHideFlags: 1

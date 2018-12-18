@@ -222,7 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caster: {fileID: 0}
   fighter: {fileID: 0}
+  movementForce: 200
   damage: 5
+  myVector: {x: -1, y: 0, z: 0}
 --- !u!135 &135467347355685730
 SphereCollider:
   m_ObjectHideFlags: 1

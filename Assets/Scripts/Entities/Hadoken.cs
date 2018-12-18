@@ -9,14 +9,17 @@ public class Hadoken : MonoBehaviour {
 
 	private Rigidbody body;
 	private float creationTime;
+	public Vector3 myVector;
+
 
 	// Use this for initialization
 	void Start () {
 		Debug.Log ("Hadok " + this.gameObject.name);
 		creationTime = Time.time;
 		body = GetComponent<Rigidbody> ();
-		// body.AddRelativeForce (new Vector3 (movementForce, 0, 0));
-		body.AddRelativeForce (Vector3.right*movementForce);
+		//body.AddRelativeForce (Vector3.right*movementForce);
+		body.AddRelativeForce ( myVector * movementForce);
+
 	}
 
 	// Update is called once per frame

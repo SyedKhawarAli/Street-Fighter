@@ -15,14 +15,12 @@ public class HitColider : MonoBehaviour {
 					print ("flyinKick is true");
 					FighterFlyingBehaviour.flyinKick = false;
 					somebody.body.AddForce (somebody.transform.up * 200);
-					somebody.flyingAnimation ();
+					somebody.flyingAnimation ();	
 				}
 				somebody.body.AddForce (somebody.transform.forward * -300);
 				Quaternion rot = this.GetComponent<Transform> ().rotation;
 				Vector3 pos = this.transform.position;
-				var effect = Instantiate (particleEffect, pos, Quaternion.identity);
-				Destroy (effect,2);
-				
+				var effect = Instantiate (particleEffect, pos, Quaternion.identity);				
 			}
 		}
 	}
